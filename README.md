@@ -1,5 +1,18 @@
-## Deploy Argo
-# Create Role Binding for Argo svc Account cluster-admin
+# Deploy Argo
+##
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    openshift.io/cluster-monitoring: "true"
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
+  name: openshift-gitops-operator
+```
+
+## Create Role Binding for Argo svc Account cluster-admin
 ```yaml
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
