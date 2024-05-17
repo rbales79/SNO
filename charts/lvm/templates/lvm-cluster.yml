@@ -9,7 +9,7 @@ spec:
       - deviceSelector:
           paths:
             - {{ .Values.path }}
-          forceWipeDevicesAndDestroyAllData: true
+          forceWipeDevicesAndDestroyAllData: false
         fstype: xfs
         thinPoolConfig:
           sizePercent: 90
