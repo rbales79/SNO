@@ -1,21 +1,34 @@
 ## Deploy Argo
-#
+# Create Role Binding for Argo svc Account cluster-admin
 ```yaml
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  labels:
-    operators.coreos.com/openshift-gitops-operator.openshift-gitops-operator: ''
-  name: openshift-gitops-operator
+  name: openshift-gitops-argocd-application-controller-clusteradmin
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+```
+
+# OpenShift GitOps Operator Group
+```yaml
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  generateName: openshift-gitops-operator-
+  name: openshift-gitops-operator-cluster
   namespace: openshift-gitops-operator
 spec:
-  channel: latest
-  installPlanApproval: Automatic
-  name: openshift-gitops-operator
-  source: redhat-operators
-  sourceNamespace: openshift-marketplace
-  startingCSV: openshift-gitops-operator.v1.12.1
----
+  upgradeStrategy: Default
+```
+
+# OpenShift GitOps Subscription
+```yaml
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
