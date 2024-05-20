@@ -1,17 +1,17 @@
 # Layout
-  ## applications # A folder in the same repo for simplicity, but ideally a repo per app
+  ### applications # folder in the same repo for simplicity, but ideally a repo per app
     - app1
     - app2
 
-  ## charts # All Charts go here
+  ### charts # All Charts go here
     - All Charts 
 
-  ## Clusters # Individually deployed clusters with reference to deployments and apps
+  ### Clusters # Individually deployed clusters with reference to deployments and apps
     - cluster1
     - Cluster2
     - Cluster3
 
-  ## Deployments # deployment specific for different types of cluster builds i.e. sno vs hci vs vm
+  ### Deployments # deployment specific for different types of cluster builds i.e. sno vs hci vs vm
     - deployment1
     - deployment2
     - deployment3
