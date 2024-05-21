@@ -1,0 +1,54 @@
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: node0-storage-ip
+spec:
+  desiredState:
+    interfaces:
+      - ipv4:
+          address:
+            - ip: {{ .Values.network.node0.storageIp.ip }}
+              prefix-length: {{ .Values.network.node0.storageIp.prefixLength }}
+          enabled: true
+        name: {{ .Values.network.node0.storageInterface.name }}
+        state: up
+        type: ethernet
+  nodeSelector:
+    kubernetes.io/hostname: {{ .Values.network.node0.name }}
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: node1-storage-ip
+spec:
+  desiredState:
+    interfaces:
+      - ipv4:
+          address:
+            - ip: {{ .Values.network.node1.storageIp.ip }}
+              prefix-length: {{ .Values.network.node1.storageIp.prefixLength }}
+          enabled: true
+        name: {{ .Values.network.node1.storageInterface.name }}
+        state: up
+        type: ethernet
+  nodeSelector:
+    kubernetes.io/hostname: {{ .Values.network.node1.name }}
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: node2-storage-ip
+spec:
+  desiredState:
+    interfaces:
+      - ipv4:
+          address:
+            - ip: {{ .Values.network.node2.storageIp.ip }}
+              prefix-length: {{ .Values.network.node2.storageIp.prefixLength }}
+          enabled: true
+        name: {{ .Values.network.node2.storageInterface.name }}
+        state: up
+        type: ethernet
+  nodeSelector:
+    kubernetes.io/hostname: {{ .Values.network.node2.name }}
