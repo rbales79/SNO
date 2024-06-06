@@ -6,12 +6,12 @@
   ### charts # All Charts go here
     - All Charts 
 
-  ### Clusters # Individually deployed clusters with reference to deployments and apps
+  ### Clusters # Individually deployed clusters with reference to roles and apps
     - cluster1
     - Cluster2
     - Cluster3
 
-  ### Deployments # deployment specific for different types of cluster builds i.e. sno vs hci vs vm
+  ### roles # deployment specific for different types of cluster builds i.e. sno vs hci vs vm
     - deployment1
     - deployment2
     - deployment3
@@ -76,3 +76,14 @@ spec:
   sourceNamespace: openshift-marketplace
   startingCSV: openshift-gitops-operator.v1.12.1
 ```
+# Steps
+1. Build the Agent ISO and use it to build your cluster.
+2. Manually install OpenShift GitOps
+3. In Argo, add the repositories you need
+
+    | type | name  | repository                                |
+    |------|-------|-------------------------------------------|
+    | helm | bjw-s | https://bjw-s.github.io/helm-charts       |
+    | git  |       | https://github.com/rbales79/sno.git |
+
+
