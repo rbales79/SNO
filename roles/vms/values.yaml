@@ -2,5 +2,5 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: YOUR_REPO_URL
+    repoURL: https://github.com/rbales79/SNO.git
     targetRevision: HEAD
