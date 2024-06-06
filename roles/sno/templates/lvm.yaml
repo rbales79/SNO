@@ -15,6 +15,11 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
     helm:
+      parameters:
+      - name: .Values.spec.source.repoURL
+        value: {{ .Values.spec.source.repoURL }}
+      - name: .Values.spec.source.targetRevision
+        value: {{ .Values.spec.source.targetRevision }}
   syncPolicy:
     automated:
       selfHeal: true
