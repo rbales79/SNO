@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lvm
+  namespace: openshift-gitops
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: openshift-storage
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: charts/lvm-instance
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    helm:
+      parameters:
+      - name: .Values.spec.source.repoURL
+        value: {{ .Values.spec.source.repoURL }}
+      - name: .Values.spec.source.targetRevision
+        value: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      selfHeal: true
