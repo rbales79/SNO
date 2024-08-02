@@ -74,7 +74,7 @@ spec:
   name: openshift-gitops-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: openshift-gitops-operator.v1.12.1
+  startingCSV: openshift-gitops-operator.v1.13.11
 ```
 # Steps
 1. Build the Agent ISO and use it to build your cluster.
